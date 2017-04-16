@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="favicon.ico">
+
+  <title>DeployableItemsDB - database of all deployable items in your organization</title>
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="starter-template.css" rel="stylesheet">
+  <script id="template" type="x-tmpl-mustache">
+    {{#releases}}
+    <tr>
+      <td>{{key}}</td>
+      <td>{{name}}</td>
+      <td>{{description}}</td>
+      <td>{{release_date}}</td>
+    </tr>
+    {{/releases}}
+  </script>
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">DeployableItemsDB</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a id="release-href" href="#release">Release</a></li>
+          <li><a id="#deployments-href" href="#about">Deployments</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div id="release">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="release-table">
+
+        </tbody>
+      </table>
+
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#release-add">Add New</button>
+      <button type="button" class="btn btn-danger">Remove</button>
+      <button type="button" class="btn btn-danger">Archive</button>
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="release-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Add Release</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="release-key">Key</label>
+                <input type="text" class="form-control" id="release-key" placeholder="Key">
+              </div>
+              <div class="form-group">
+                <label for="release-name">Name</label>
+                <input type="text" class="form-control" id="release-name" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <label for="release-desc">Description</label>
+                <textarea class="form-control" rows="3" id="release-desc"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/mustache.min.js"></script>
+    <script src="js/deployableItemsDB.js"></script>
+    <script>
+      console.log('in script');
+      $(document).ready(init);
+    </script>
+</body>
+
+</html>
