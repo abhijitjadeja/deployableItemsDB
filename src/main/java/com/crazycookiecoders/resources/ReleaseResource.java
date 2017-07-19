@@ -37,10 +37,10 @@ public class ReleaseResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{key}")
-    public String update(@PathParam("key") String key, Map<String, Object> dto) {
+    public Response update(@PathParam("key") String key, Map<String, Object> dto) {
         dao.update(key, (String) dto.get("name"), (String) dto.get("description"), parseDate((String) dto.get("date")),
                 (String) dto.get("status"));
-        return "{'status':'success'}";
+        return Response.accepted().build();
     }
 
     private LocalDate parseDate(String date) {
@@ -51,11 +51,11 @@ public class ReleaseResource {
     }
 
     @PUT
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{key}")
-    public String add(@PathParam("key") String key, Map<String, Object> dto) {
+    public Response add(@PathParam("key") String key, Map<String, Object> dto) {
         dao.insert(key, (String) dto.get("name"), (String) dto.get("description"), parseDate((String) dto.get("date")));
-        return "{'status':'success'}";
+        return Response.accepted().build();
     }
 }

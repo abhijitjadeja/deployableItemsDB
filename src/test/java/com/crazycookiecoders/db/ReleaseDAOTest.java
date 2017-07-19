@@ -12,7 +12,7 @@ public class ReleaseDAOTest {
 
     @BeforeClass
     public static void setup() {
-        DBI dbi = new DBI("jdbc:h2:/tmp/example", "sa", "sa");
+        DBI dbi = new DBI("jdbc:h2:./target/database", "sa", "sa");
         dbi.open().createScript(
                 "drop table if exists release;create table release(key varchar(26) primary key, name varchar(256) not null, description varchar(4000), release_date date, status char(1) not null default 'O');")
                 .execute();
