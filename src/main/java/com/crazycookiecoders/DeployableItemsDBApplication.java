@@ -7,7 +7,7 @@ import io.dropwizard.setup.Environment;
 
 import org.skife.jdbi.v2.DBI;
 
-import com.crazycookiecoders.db.ReleaseDAO;
+import com.crazycookiecoders.db.*;
 
 import io.dropwizard.assets.AssetsBundle;
 
@@ -37,7 +37,9 @@ public class DeployableItemsDBApplication extends Application<DeployableItemsDBC
         DBIFactory factory = new DBIFactory();
         final DBI dbi=factory.build(environment, configuration.getDataSourceFactory(), "database");
         ReleaseDAO releaseDAO =dbi.onDemand(ReleaseDAO.class);
+        ListDAO listDAO=dbi.onDemand(ListDAO.class);
         environment.jersey().register(new ReleaseResource(releaseDAO));
+        environment.jersey().register(new ListResource(listDAO));
     }
 
 }
