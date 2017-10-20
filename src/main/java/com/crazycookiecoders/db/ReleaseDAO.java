@@ -8,7 +8,6 @@ import org.skife.jdbi.v2.DefaultMapper;
 
 
 import org.skife.jdbi.v2.sqlobject.*;
-import org.skife.jdbi.v2.sqlobject.customizers.Mapper;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
 
 
